@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Twitch, Atom as Tiktok, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
@@ -75,7 +76,6 @@ function App() {
                 animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
               }}
               whileHover={{ 
-                scale: 1.1,
                 transition: { 
                   type: "spring",
                   stiffness: 400,
@@ -108,8 +108,8 @@ function App() {
                 >
                   {social.icon}
                 </motion.div>
-                <motion.span
-                  className="icon-label"
+                <motion.div
+                  className="icon-label fixed"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ 
                     opacity: hoveredIcon === social.name ? 1 : 0,
@@ -118,7 +118,7 @@ function App() {
                   style={{ color: social.color }}
                 >
                   {social.name}
-                </motion.span>
+                </motion.div>
               </div>
             </motion.a>
           ))}
