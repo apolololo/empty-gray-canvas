@@ -1,30 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Twitch, Atom as Tiktok, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
 
 function App() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
-  const [trailCount, setTrailCount] = useState(0);
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
-
-  const updateMousePosition = useCallback((e: MouseEvent) => {
-    requestAnimationFrame(() => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      
-      setTrails(prev => [
-        ...prev, 
-        { x: e.clientX, y: e.clientY, id: trailCount }
-      ].slice(-10));
-      
-      setTrailCount(prev => prev + 1);
-    });
-  }, [trailCount]);
-
-  useEffect(() => {
-    document.addEventListener('mousemove', updateMousePosition);
-    return () => document.removeEventListener('mousemove', updateMousePosition);
-  }, [updateMousePosition]);
 
   const socialLinks = [
     { icon: <Twitch size={44} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
@@ -40,54 +20,21 @@ function App() {
     <div className="h-screen w-screen text-white flex items-center justify-center relative overflow-hidden bg-black">
       <div className="background-grid" />
       
-      {/* Animated background dots */}
-      {Array.from({ length: 150 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white rounded-full"
-          initial={{ opacity: 0.1 }}
-          animate={{
-            x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
-            y: [Math.random() * window.innerHeight, Math.random() * window.innerHeight],
-            opacity: [0.2, 0.5, 0.2],
-            scale: [0.8, 1.2, 0.8],
-          }}
-          transition={{
-            duration: Math.random() * 15 + 10,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-
-      {/* Cursor */}
-      <motion.div 
-        className="cursor"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          scale: hoveredIcon ? 1.5 : 1,
-        }}
-      />
-      
-      {/* Cursor trails */}
-      <AnimatePresence>
-        {trails.map((trail) => (
-          <motion.div
-            key={trail.id}
-            className="cursor-trail"
-            style={{
-              left: trail.x,
-              top: trail.y,
-            }}
-            initial={{ opacity: 0.8, scale: 1 }}
-            animate={{ opacity: 0, scale: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          />
+      {/* Animated background elements */}
+      <div className="animated-background">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div key={i} className="animated-circle" style={{ 
+            animationDelay: `${i * 0.5}s`, 
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: `${Math.random() * 80 + 20}px`,
+            height: `${Math.random() * 80 + 20}px`
+          }} />
         ))}
-      </AnimatePresence>
+      </div>
+      
+      {/* Animated gradient overlay */}
+      <div className="gradient-overlay" />
 
       {/* Main content */}
       <div className="z-10 text-center">
