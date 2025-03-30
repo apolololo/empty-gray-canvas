@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Twitch, Atom as Tiktok, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
@@ -22,14 +21,19 @@ function App() {
       
       {/* Animated background elements */}
       <div className="animated-background">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <div key={i} className="animated-circle" style={{ 
-            animationDelay: `${i * 0.5}s`, 
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${Math.random() * 80 + 20}px`,
-            height: `${Math.random() * 80 + 20}px`
-          }} />
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div 
+            key={i} 
+            className="animated-circle" 
+            style={{ 
+              animationDelay: `${i * -1.5}s`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 200 + 50}px`,
+              height: `${Math.random() * 200 + 50}px`,
+              animationDuration: `${20 + Math.random() * 10}s`
+            }} 
+          />
         ))}
       </div>
       
