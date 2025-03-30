@@ -1,14 +1,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Twitch, Atom as Tiktok, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
+import { Twitch, Atom, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
 
 function App() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
   const socialLinks = [
     { icon: <Twitch size={44} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <Tiktok size={44} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <Atom size={44} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
     { icon: <Youtube size={44} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
     { icon: <Twitter size={44} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
     { icon: <Instagram size={44} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
