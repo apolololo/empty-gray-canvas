@@ -156,13 +156,6 @@ body {
 }
 
 .icon-label {
-<<<<<<< HEAD
-=======
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
->>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
   white-space: nowrap;
   font-weight: 600;
   font-size: 0.75rem;
