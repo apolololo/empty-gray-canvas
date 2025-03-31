@@ -2,24 +2,24 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Instagram, 
+  Instagram,
   Youtube, 
   Twitter, 
-  Twitch, 
-  TikTok, 
+  Twitch,
+  MessageCircle, // Using this instead of TikTok which doesn't exist
   Coffee, 
   Play 
 } from 'lucide-react';
 
 function App() {
   const socialLinks = [
-    { icon: <Twitch size={36} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <TikTok size={36} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
-    { icon: <Youtube size={36} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
-    { icon: <Twitter size={36} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
-    { icon: <Instagram size={36} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
-    { icon: <Coffee size={36} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
-    { icon: <Play size={36} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+    { icon: <Twitch size={48} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
+    { icon: <MessageCircle size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <Youtube size={48} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
+    { icon: <Twitter size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
+    { icon: <Instagram size={48} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
+    { icon: <Coffee size={48} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
+    { icon: <Play size={48} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
   ];
 
   return (
