@@ -7,13 +7,13 @@ function App() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
   const socialLinks = [
-    { icon: <Twitch size={24} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <Atom size={24} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
-    { icon: <Youtube size={24} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
-    { icon: <Twitter size={24} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
-    { icon: <Instagram size={24} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
-    { icon: <Coffee size={24} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
-    { icon: <Play size={24} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+    { icon: <Twitch size={28} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
+    { icon: <Atom size={28} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <Youtube size={28} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
+    { icon: <Twitter size={28} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
+    { icon: <Instagram size={28} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
+    { icon: <Coffee size={28} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
+    { icon: <Play size={28} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
   ];
 
   return (
@@ -57,13 +57,12 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6 lg:gap-8"
-          style={{ margin: '0 auto' }}
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 md:gap-8 lg:gap-10 max-w-3xl mx-auto"
         >
           {socialLinks.map((social, index) => (
             <motion.div
               key={social.name}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center relative group"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -77,10 +76,9 @@ function App() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon group"
+                className="social-icon-container"
                 style={{
                   animationDelay: `${index * 0.1}s`,
-                  animationDuration: '3s',
                   animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
                 }}
                 whileHover={{ 
@@ -95,6 +93,7 @@ function App() {
                 onHoverEnd={() => setHoveredIcon(null)}
               >
                 <motion.div 
+                  className="social-icon"
                   animate={{ 
                     scale: hoveredIcon === social.name ? [1, 1.1, 1] : 1,
                     rotate: hoveredIcon === social.name ? [0, -5, 5, 0] : 0,
@@ -105,18 +104,21 @@ function App() {
                     ease: "easeInOut"
                   }}
                   style={{ color: hoveredIcon === social.name ? social.color : '#fff' }}
-                  className="flex items-center justify-center w-full h-full"
                 >
                   {social.icon}
                 </motion.div>
               </motion.a>
               <motion.div
+                className="label-wrapper"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ 
                   opacity: hoveredIcon === social.name ? 1 : 0,
                   y: hoveredIcon === social.name ? 0 : 10
                 }}
-                className="label-container"
+                transition={{
+                  duration: 0.2,
+                  ease: "easeInOut"
+                }}
               >
                 <span className="icon-label" style={{ color: social.color }}>
                   {social.name}
