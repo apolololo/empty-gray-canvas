@@ -10,16 +10,17 @@ import {
 } from 'lucide-react';
 import TikTokIcon from './components/icons/TikTokIcon';
 import XIcon from './components/icons/XIcon';
+import KickIcon from './components/icons/KickIcon';
 
 function App() {
   const socialLinks = [
     { icon: <Twitch size={48} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <TikTokIcon size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <TikTokIcon size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#00f2ea' },
     { icon: <Youtube size={48} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
     { icon: <XIcon size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#ffffff' },
     { icon: <Instagram size={48} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
-    { icon: <Coffee size={48} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
-    { icon: <Play size={48} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+    { icon: <Coffee size={48} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#29ABE0' },
+    { icon: <KickIcon size={48} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
   ];
 
   return (
