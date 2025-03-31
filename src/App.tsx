@@ -1,19 +1,25 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Twitch, Youtube, Twitter, Instagram, Coffee, Play, Atom } from 'lucide-react';
+import { 
+  BrandTiktok, 
+  BrandYoutube, 
+  BrandTwitterX, 
+  BrandTwitch, 
+  BrandInstagram, 
+  Coffee, 
+  Play 
+} from 'lucide-react';
 
 function App() {
-  const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
-
   const socialLinks = [
-    { icon: <Twitch size={28} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <Atom size={28} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
-    { icon: <Youtube size={28} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
-    { icon: <Twitter size={28} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
-    { icon: <Instagram size={28} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
-    { icon: <Coffee size={28} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
-    { icon: <Play size={28} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+    { icon: <BrandTwitch size={36} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
+    { icon: <BrandTiktok size={36} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <BrandYoutube size={36} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
+    { icon: <BrandTwitterX size={36} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
+    { icon: <BrandInstagram size={36} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
+    { icon: <Coffee size={36} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
+    { icon: <Play size={36} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
   ];
 
   return (
@@ -57,12 +63,12 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 md:gap-8 lg:gap-10 max-w-3xl mx-auto"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 md:gap-8 lg:gap-10 max-w-4xl mx-auto"
         >
           {socialLinks.map((social, index) => (
             <motion.div
               key={social.name}
-              className="flex flex-col items-center relative group"
+              className="flex flex-col items-center"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -76,7 +82,7 @@ function App() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon-container"
+                className="social-icon-link"
                 style={{
                   animationDelay: `${index * 0.1}s`,
                   animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
@@ -89,41 +95,23 @@ function App() {
                     damping: 17
                   }
                 }}
-                onHoverStart={() => setHoveredIcon(social.name)}
-                onHoverEnd={() => setHoveredIcon(null)}
               >
                 <motion.div 
                   className="social-icon"
-                  animate={{ 
-                    scale: hoveredIcon === social.name ? [1, 1.1, 1] : 1,
-                    rotate: hoveredIcon === social.name ? [0, -5, 5, 0] : 0,
+                  whileHover={{
+                    backgroundColor: `${social.color}22`,
+                    borderColor: social.color,
+                    color: social.color,
+                    boxShadow: `0 0 15px ${social.color}66`
                   }}
                   transition={{
-                    duration: 1,
-                    repeat: hoveredIcon === social.name ? Infinity : 0,
-                    ease: "easeInOut"
+                    duration: 0.3,
+                    ease: "easeOut"
                   }}
-                  style={{ color: hoveredIcon === social.name ? social.color : '#fff' }}
                 >
                   {social.icon}
                 </motion.div>
               </motion.a>
-              <motion.div
-                className="label-wrapper"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ 
-                  opacity: hoveredIcon === social.name ? 1 : 0,
-                  y: hoveredIcon === social.name ? 0 : 10
-                }}
-                transition={{
-                  duration: 0.2,
-                  ease: "easeInOut"
-                }}
-              >
-                <span className="icon-label" style={{ color: social.color }}>
-                  {social.name}
-                </span>
-              </motion.div>
             </motion.div>
           ))}
         </motion.div>

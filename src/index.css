@@ -95,7 +95,7 @@ body {
   pointer-events: none;
 }
 
-.social-icon-container {
+.social-icon-link {
   position: relative;
   display: flex;
   align-items: center;
@@ -106,24 +106,18 @@ body {
 
 .social-icon {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   padding: 1rem;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow: visible;
-}
-
-.social-icon:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .social-icon::before {
@@ -152,31 +146,6 @@ body {
   text-shadow: 
     0 0 30px rgba(255, 255, 255, 0.3),
     0 0 60px rgba(255, 255, 255, 0.2);
-}
-
-.label-wrapper {
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.icon-label {
-  white-space: nowrap;
-  font-weight: 600;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  background: rgba(0, 0, 0, 0.75);
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.5rem;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-align: center;
-  display: block;
 }
 
 .background-grid {
