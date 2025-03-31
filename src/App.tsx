@@ -4,19 +4,19 @@ import { motion } from 'framer-motion';
 import { 
   Instagram,
   Youtube, 
-  Twitter, 
   Twitch,
-  MessageCircle, // Using this instead of TikTok which doesn't exist
   Coffee, 
   Play 
 } from 'lucide-react';
+import TikTokIcon from './components/icons/TikTokIcon';
+import XIcon from './components/icons/XIcon';
 
 function App() {
   const socialLinks = [
     { icon: <Twitch size={48} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <MessageCircle size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <TikTokIcon size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
     { icon: <Youtube size={48} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
-    { icon: <Twitter size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
+    { icon: <XIcon size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#ffffff' },
     { icon: <Instagram size={48} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
     { icon: <Coffee size={48} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
     { icon: <Play size={48} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
@@ -85,7 +85,6 @@ function App() {
                 className="social-icon-link"
                 style={{
                   animationDelay: `${index * 0.1}s`,
-                  animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
                 }}
                 whileHover={{ 
                   scale: 1.1,
@@ -105,7 +104,7 @@ function App() {
                     boxShadow: `0 0 15px ${social.color}66`
                   }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "easeOut"
                   }}
                 >
