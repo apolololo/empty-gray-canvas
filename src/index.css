@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -111,9 +112,9 @@ body {
 }
 
 .social-icon:hover {
-  transform: translateY(-8px) scale(1.05);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
 }
 
 .social-icon::before {
@@ -130,7 +131,7 @@ body {
 }
 
 .social-icon:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .gradient-text {
@@ -155,6 +156,13 @@ body {
 }
 
 .icon-label {
+<<<<<<< HEAD
+=======
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+>>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
   white-space: nowrap;
   font-weight: 600;
   font-size: 0.75rem;

@@ -1,11 +1,13 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Twitch, Atom as Tiktok, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
+import { Twitch, Atom, Youtube, Twitter, Instagram, Coffee, Play } from 'lucide-react';
 
 function App() {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
   const socialLinks = [
+<<<<<<< HEAD
     { icon: <Twitch size={24} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
     { icon: <Tiktok size={24} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
     { icon: <Youtube size={24} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
@@ -13,6 +15,15 @@ function App() {
     { icon: <Instagram size={24} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
     { icon: <Coffee size={24} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
     { icon: <Play size={24} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+=======
+    { icon: <Twitch size={44} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
+    { icon: <Atom size={44} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#ff0050' },
+    { icon: <Youtube size={44} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
+    { icon: <Twitter size={44} />, url: 'https://x.com/apoftn1', name: 'X', color: '#1DA1F2' },
+    { icon: <Instagram size={44} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
+    { icon: <Coffee size={44} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#FF5E5B' },
+    { icon: <Play size={44} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
+>>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
   ];
 
   return (
@@ -62,7 +73,26 @@ function App() {
           {socialLinks.map((social, index) => (
             <motion.div
               key={social.name}
+<<<<<<< HEAD
               className="flex flex-col items-center"
+=======
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon group"
+              style={{
+                animationDelay: `${index * 0.1}s`,
+                animationDuration: '3s',
+                animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
+              }}
+              whileHover={{ 
+                transition: { 
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 17
+                }
+              }}
+>>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -108,6 +138,7 @@ function App() {
                 >
                   {social.icon}
                 </motion.div>
+<<<<<<< HEAD
               </motion.a>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -122,6 +153,21 @@ function App() {
                 </span>
               </motion.div>
             </motion.div>
+=======
+                <motion.div
+                  className="icon-label fixed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ 
+                    opacity: hoveredIcon === social.name ? 1 : 0,
+                    y: hoveredIcon === social.name ? 0 : 10
+                  }}
+                  style={{ color: social.color }}
+                >
+                  {social.name}
+                </motion.div>
+              </div>
+            </motion.a>
+>>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
           ))}
         </motion.div>
       </div>
