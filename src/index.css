@@ -1,192 +1,190 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@keyframes glowingEyes {
+  0% { filter: drop-shadow(0 0 5px #00D9FF) brightness(1); }
+  50% { filter: drop-shadow(0 0 15px #00D9FF) brightness(1.2); }
+  100% { filter: drop-shadow(0 0 5px #00D9FF) brightness(1); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+@keyframes smokeEffect {
+  0% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-10px) scale(1.1); opacity: 0.1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.3; }
 }
 
-@keyframes backgroundPulse {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0.3; }
+@keyframes statusEffect {
+  0% { transform: translateX(-10px); opacity: 0; }
+  10% { transform: translateX(0); opacity: 1; }
+  90% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(10px); opacity: 0; }
 }
 
-@keyframes softGlow {
-  0% { box-shadow: 0 0 20px rgba(50, 50, 255, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(50, 50, 255, 0.4); }
-  100% { box-shadow: 0 0 20px rgba(50, 50, 255, 0.2); }
-}
-
-@keyframes colorChange {
-  0% { background-color: rgba(20, 20, 80, 0.1); }
-  33% { background-color: rgba(80, 20, 80, 0.1); }
-  66% { background-color: rgba(20, 80, 80, 0.1); }
-  100% { background-color: rgba(20, 20, 80, 0.1); }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes floatingBubbles {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(10px, -15px) rotate(5deg); }
-  50% { transform: translate(-5px, -25px) rotate(-5deg); }
-  75% { transform: translate(-15px, -15px) rotate(3deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+@keyframes monarchAura {
+  0% { text-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(106, 0, 255, 0.3); }
+  50% { text-shadow: 0 0 40px rgba(0, 217, 255, 0.7), 0 0 60px rgba(106, 0, 255, 0.5); }
+  100% { text-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(106, 0, 255, 0.3); }
 }
 
 body {
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-  font-family: 'Inter', sans-serif;
-  overflow: hidden;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   width: 100vw;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  background: #000;
+  overflow-x: hidden;
 }
 
-.animated-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(40, 40, 120, 0.05);
-  backdrop-filter: blur(5px);
-  animation: floatingBubbles 20s infinite ease-in-out;
-  z-index: 1;
-  opacity: 0.2;
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  pointer-events: none;
-}
-
-.animated-background {
+.background-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
+  background-image: url('https://raw.githubusercontent.com/StackBlitz/stackblitz-bg/main/solo-leveling-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -2;
 }
 
-.gradient-overlay {
+.smoke-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(60, 60, 180, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(180, 60, 120, 0.1) 0%, transparent 50%);
-  z-index: 0;
-  animation: backgroundPulse 10s infinite;
-  pointer-events: none;
+    radial-gradient(circle at 30% 40%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(106, 0, 255, 0.1) 0%, transparent 50%);
+  z-index: -1;
+  animation: smokeEffect 8s infinite ease-in-out;
+}
+
+.monarch-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 15vw, 8rem);
+  color: #fff;
+  animation: monarchAura 3s infinite ease-in-out;
+  text-align: center;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 2;
+}
+
+.status-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Rajdhani', sans-serif;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+}
+
+.status-text {
+  color: #00D9FF;
+  font-size: 1rem;
+  font-weight: 600;
+  animation: statusEffect 2s infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .social-grid {
+    grid-template-columns: repeat(4, 60px);
+  }
+}
+
+@media (max-width: 480px) {
+  .social-grid {
+    grid-template-columns: repeat(3, 60px);
+  }
+}
+
+.icon-wrapper {
+  perspective: 1000px;
 }
 
 .social-icon {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 48px;
-  height: 48px;
-  padding: 0.75rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 217, 255, 0.3);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: visible;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
 }
 
 .social-icon:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.05);
+  border-color: #00D9FF;
+  box-shadow: 
+    0 0 20px rgba(0, 217, 255, 0.4),
+    0 0 40px rgba(106, 0, 255, 0.2);
+  transform: translateY(-5px) rotateX(10deg);
 }
 
 .social-icon::before {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  inset: -2px;
+  background: linear-gradient(45deg, #00D9FF, #6A00FF);
+  border-radius: 12px;
+  z-index: -1;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: -1;
 }
 
 .social-icon:hover::before {
-  opacity: 0;
+  opacity: 1;
 }
 
-.gradient-text {
-  background: linear-gradient(45deg, #ffffff 30%, #6b6b6b 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 
-    0 0 30px rgba(255, 255, 255, 0.3),
-    0 0 60px rgba(255, 255, 255, 0.2);
-}
-
-.label-container {
+.icon-label {
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 0.75rem;
-  width: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.icon-label {
-<<<<<<< HEAD
-=======
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translateX(-50%);
->>>>>>> e8a650bc0be4efd925651d440bd6083e5717a271
+  margin-top: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  color: #00D9FF;
   white-space: nowrap;
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  background: rgba(0, 0, 0, 0.75);
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.5rem;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-align: center;
-  display: block;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
-.background-grid {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  animation: backgroundPulse 4s ease-in-out infinite;
+.social-icon:hover .icon-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
