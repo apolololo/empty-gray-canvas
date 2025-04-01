@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -18,7 +19,6 @@ function App() {
     { icon: <Youtube size={48} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
     { icon: <XIcon size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#ffffff' },
     { icon: <Instagram size={48} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
-    { icon: <Coffee size={48} />, url: 'https://ko-fi.com/apo__', name: 'Ko-Fi', color: '#29ABE0' },
     { icon: <KickIcon size={48} />, url: 'https://kick.com/tryh-apo', name: 'Kick', color: '#53FC18' }
   ];
 
@@ -113,6 +113,51 @@ function App() {
               </motion.a>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Separate Ko-Fi Support Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            delay: 0.9,
+            type: "spring",
+            stiffness: 200,
+            damping: 20
+          }}
+          className="mt-12 flex flex-col items-center"
+        >
+          <motion.a
+            href="https://ko-fi.com/apo__"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-link"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { 
+                type: "spring",
+                stiffness: 400,
+                damping: 17
+              }
+            }}
+          >
+            <motion.div 
+              className="flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-[#29ABE0] text-white font-semibold"
+              whileHover={{
+                boxShadow: `0 0 15px rgba(41, 171, 224, 0.6)`,
+              }}
+              transition={{
+                duration: 0.2,
+                ease: "easeOut"
+              }}
+            >
+              <Coffee size={24} />
+              <span>Me soutenir avec Ko-Fi</span>
+            </motion.div>
+          </motion.a>
+          <p className="text-sm text-gray-300 mt-2 max-w-md">
+            Faites un don pour me soutenir et m'aider à créer plus de contenu !
+          </p>
         </motion.div>
       </div>
     </div>
