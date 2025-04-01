@@ -1,11 +1,25 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const TikTokIcon = ({ size = 48 }: { size?: number }) => {
+  const iconRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    // This ensures the Iconify library processes the icon after component mount
+    if (iconRef.current && window.Iconify) {
+      window.Iconify.scan(iconRef.current);
+    }
+  }, []);
+
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.166v13.453c0 1.454-1.266 2.75-2.794 2.75-1.531 0-2.795-1.296-2.795-2.75 0-1.454 1.264-2.647 2.795-2.647.4 0 .783.083 1.14.232v-3.17a6.109 6.109 0 0 0-1.14-.114C6.302 9.754 3 12.957 3 16.906 3 20.855 6.302 24 9.859 24c3.556 0 6.859-3.145 6.859-7.094V9.769c1.372.97 3.061 1.568 4.872 1.568v-3.168a4.656 4.656 0 0 1-2 -1.483" fill="white"/>
-    </svg>
+    <span 
+      ref={iconRef}
+      className="iconify" 
+      data-icon="fa-brands:tiktok" 
+      data-width={size} 
+      data-height={size}
+      style={{ color: 'white', display: 'inline-block' }}
+    />
   );
 };
 

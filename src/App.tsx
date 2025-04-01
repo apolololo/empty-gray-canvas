@@ -12,10 +12,19 @@ import TikTokIcon from './components/icons/TikTokIcon';
 import XIcon from './components/icons/XIcon';
 import KickIcon from './components/icons/KickIcon';
 
+// Add Iconify declaration for TypeScript
+declare global {
+  interface Window {
+    Iconify: {
+      scan: (element: HTMLElement) => void;
+    };
+  }
+}
+
 function App() {
   const socialLinks = [
     { icon: <Twitch size={48} />, url: 'https://www.twitch.tv/tryh_apo', name: 'Twitch', color: '#6441a5' },
-    { icon: <TikTokIcon size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#00f2ea' },
+    { icon: <TikTokIcon size={48} />, url: 'https://www.tiktok.com/@apo_ban', name: 'TikTok', color: '#25F4EE' },
     { icon: <Youtube size={48} />, url: 'https://www.youtube.com/@tryhapo', name: 'YouTube', color: '#ff0000' },
     { icon: <XIcon size={48} />, url: 'https://x.com/apoftn1', name: 'X', color: '#ffffff' },
     { icon: <Instagram size={48} />, url: 'https://instagram.com/tryh_apo', name: 'Instagram', color: '#E1306C' },
