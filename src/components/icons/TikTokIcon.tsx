@@ -1,19 +1,9 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const TikTokIcon = ({ size = 48 }: { size?: number }) => {
-  const iconRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    // This ensures the Iconify library processes the icon after component mount
-    if (iconRef.current && window.Iconify) {
-      window.Iconify.scan(iconRef.current);
-    }
-  }, []);
-
   return (
     <span 
-      ref={iconRef}
       className="iconify" 
       data-icon="fa-brands:tiktok" 
       data-width={size} 

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -11,15 +10,6 @@ import {
 import TikTokIcon from './components/icons/TikTokIcon';
 import XIcon from './components/icons/XIcon';
 import KickIcon from './components/icons/KickIcon';
-
-// Add Iconify declaration for TypeScript
-declare global {
-  interface Window {
-    Iconify: {
-      scan: (element: HTMLElement) => void;
-    };
-  }
-}
 
 function App() {
   const socialLinks = [
