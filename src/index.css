@@ -36,6 +36,32 @@
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes slowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes gentleSwayX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes gentleSwayY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
 body {
   background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
   font-family: 'Inter', sans-serif;
@@ -110,6 +136,28 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow: visible;
   will-change: transform, background-color, box-shadow;
+}
+
+.floating-icon {
+  animation: floating 3s ease-in-out infinite;
+}
+
+.floating-element {
+  animation: gentleBounce 6s ease-in-out infinite;
+}
+
+.floating-container {
+  animation: gentleSwayX 8s ease-in-out infinite;
+}
+
+.floating-button {
+  animation: gentleSwayY 4s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(41, 171, 224, 0.3);
+}
+
+.floating-text {
+  animation: gentleSwayY 5s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 
 .gradient-text {

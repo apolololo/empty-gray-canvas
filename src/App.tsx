@@ -37,7 +37,8 @@ function App() {
               top: `${Math.random() * 100}%`,
               width: `${Math.random() * 100 + 20}px`,
               height: `${Math.random() * 100 + 20}px`,
-              animationDuration: `${15 + Math.random() * 10}s`
+              animationDuration: `${15 + Math.random() * 10}s`,
+              transform: `rotate(${Math.random() * 360}deg)`
             }} 
           />
         ))}
@@ -54,7 +55,7 @@ function App() {
             stiffness: 200,
             damping: 20,
           }}
-          className="text-7xl md:text-8xl lg:text-9xl font-bold mb-10 md:mb-20 gradient-text tracking-wider"
+          className="floating-element text-7xl md:text-8xl lg:text-9xl font-bold mb-10 md:mb-20 gradient-text tracking-wider"
         >
           APO
         </motion.h1>
@@ -63,12 +64,12 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6 md:gap-8 lg:gap-10 max-w-4xl mx-auto"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 md:gap-8 lg:gap-10 max-w-4xl mx-auto"
         >
           {socialLinks.map((social, index) => (
             <motion.div
               key={social.name}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center floating-container"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -76,6 +77,9 @@ function App() {
                 type: "spring",
                 stiffness: 200,
                 damping: 20
+              }}
+              style={{
+                animationDelay: `${index * 0.2}s`
               }}
             >
               <motion.a
@@ -96,7 +100,7 @@ function App() {
                 }}
               >
                 <motion.div 
-                  className="social-icon"
+                  className="social-icon floating-icon"
                   whileHover={{
                     backgroundColor: `${social.color}22`,
                     borderColor: social.color,
@@ -125,7 +129,7 @@ function App() {
             stiffness: 200,
             damping: 20
           }}
-          className="mt-12 flex flex-col items-center"
+          className="mt-12 flex flex-col items-center floating-element"
         >
           <motion.a
             href="https://ko-fi.com/apo__"
@@ -142,7 +146,7 @@ function App() {
             }}
           >
             <motion.div 
-              className="flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-[#29ABE0] text-white font-semibold"
+              className="flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-[#29ABE0] text-white font-semibold floating-button"
               whileHover={{
                 boxShadow: `0 0 15px rgba(41, 171, 224, 0.6)`,
               }}
@@ -155,7 +159,7 @@ function App() {
               <span>Me soutenir avec Ko-Fi</span>
             </motion.div>
           </motion.a>
-          <p className="text-sm text-gray-300 mt-2 max-w-md">
+          <p className="text-sm text-gray-300 mt-2 max-w-md floating-text">
             Faites un don pour me soutenir et m'aider à créer plus de contenu !
           </p>
         </motion.div>
